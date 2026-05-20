@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick, watch } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 import { VueFlow, useVueFlow, Position, Handle } from '@vue-flow/core';
 import dagre from 'dagre';
 import '@vue-flow/core/dist/style.css';
@@ -103,10 +103,10 @@ onPaneReady(() => {
 </script>
 
 <template>
-<div :class="[hasSearched ? 'h-[12vh]' : 'h-[25vh]', 'w-full flex justify-center items-center transition-all duration-500 ease-in-out mt-4']">
-    <img :src="Logo" :class="[hasSearched ? 'h-36' : 'h-80', 'transition-all duration-500 ease-in-out object-contain']" /> 
+<div :class="[hasSearched ? 'h-[12vh] mt-4' : 'h-[35vh] mt-12', 'w-full flex justify-center items-center transition-all duration-500 ease-in-out']">
+    <img :src="Logo" :class="[hasSearched ? 'h-30 w-30' : 'h-80 w-80', 'transition-all duration-500 ease-in-out object-contain']" /> 
 </div>
-<div :class="[hasSearched ? 'h-[12vh]' : 'h-[30vh]', 'w-full flex items-center justify-center transition-all duration-500 ease-in-out']">
+<div :class="[hasSearched ? 'h-[10vh]' : 'h-[15vh]', 'w-full flex items-center justify-center transition-all duration-500 ease-in-out']">
     <form @submit.prevent="handleSearch" class="relative w-full max-w-lg px-4">
         <div class="absolute inset-y-0 left-0 flex items-center pl-8 pointer-events-none">
             <img :src="Search" class="w-5 h-5" alt="search icon" />
@@ -129,7 +129,7 @@ onPaneReady(() => {
 </div>
 
 <!-- Tampilan Awal sebelum pencarian dilakukan -->
-<div v-if="!hasSearched" class="max-w-full my-5 border mx-20 border-gray-200 rounded-xl bg-white p-12 text-center shadow-sm flex flex-col items-center justify-center min-h-[40vh] transition-all duration-500">
+<div v-if="!hasSearched" class="max-w-2xl mx-auto my-5 border border-gray-200 rounded-xl bg-white p-8 text-center shadow-sm flex flex-col items-center justify-center min-h-[25vh] transition-all duration-500">
     <div class="bg-blue-50 text-blue-600 p-4 rounded-full mb-4 animate-bounce">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -140,7 +140,7 @@ onPaneReady(() => {
 </div>
 
 <!-- Tampilan jika data pencarian tidak ditemukan -->
-<div v-else-if="nodes.length === 0" class="max-w-full my-5 border mx-20 border-gray-200 rounded-xl bg-white p-12 text-center shadow-sm flex flex-col items-center justify-center min-h-[40vh] transition-all duration-500">
+<div v-else-if="nodes.length === 0" class="max-w-2xl mx-auto my-5 border border-gray-200 rounded-xl bg-white p-8 text-center shadow-sm flex flex-col items-center justify-center min-h-[25vh] transition-all duration-500">
     <div class="bg-red-50 text-red-500 p-4 rounded-full mb-4">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
